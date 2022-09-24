@@ -7,7 +7,7 @@ export const Restaurant = ({ restaurant }) => {
         <div>
             {restaurant.name}
             <Menu menu={restaurant.menu} />
-            <Reviews reviews={restaurant.reviews} />
+            {/* <Reviews reviews={restaurant.reviews} /> */}
         </div>
     );
 };
