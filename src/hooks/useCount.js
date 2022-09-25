@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export const useCount = (initialState = 0) => {
     const [count, setCount] = useState(initialState);
-    const decrement = () => setCount(count - 1);
-    const increment = () => setCount(count + 1);
+
+    // стабильные ссылки на функции increment, decrement
+    const decrement = useCallback(() => {
+        return setCount((currentCount) => currentCount - 1)
+    }, []);
+    const increment = useCallback(() => {
+        return setCount((currentCount) => currentCount + 1)
+    }, []);
 
     return { decrement, increment, count };
 }
