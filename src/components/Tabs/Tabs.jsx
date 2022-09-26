@@ -8,7 +8,8 @@ export const Tabs = ({ tabs, activeIndex, onClick }) => (
                 key={tab}
                 title={tab}
                 isActive={index === activeIndex}
-                onClick={onClick}
+                onClick={() => onClick(index)}
+                isLast={index + 1 === tabs.length}
             />
         ))}
     </div>
