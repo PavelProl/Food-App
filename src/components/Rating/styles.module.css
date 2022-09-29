@@ -1,0 +1,26 @@
+.star {
+    height: 32px;
+}
+
+.star.medium {
+    height: 32px;
+    width: 32px;
+}
+
+.star.small {
+    height: 18px;
+    width: 18px;
+}
+
+.star:not(:last-child) {
+    margin-right: 5px;
+}
+
+.clickable {
+    transition: 0.2s;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

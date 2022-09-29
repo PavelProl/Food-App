@@ -1,21 +1,28 @@
 import React, { useReducer } from "react";
+import { Rating } from "../Rating/Rating";
+
+const FORM_ACTIONS = {
+    setName: "setName",
+    setText: "setText",
+    setRating: "setRating"
+};
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "setName": {
+        case FORM_ACTIONS.setName: {
             return {
                 name: action.payload,
                 text: "",
                 rating: 4
             }
         }
-        case "setText": {
+        case FORM_ACTIONS.setText: {
             return {
                 ...state,
                 text: action.payload,
             }
         }
-        case "setRating": {
+        case FORM_ACTIONS.setRating: {
             const text = action.payload;
             if (text === "") {
                 return {
@@ -52,7 +59,7 @@ export const NewReviewForm = () => {
                     value={form.name}
                     onChange={(event) => {
                         dispatch({
-                            type: "setName",
+                            type: FORM_ACTIONS.setName,
                             payload: event.target.value
                         })
                     }}
@@ -64,7 +71,7 @@ export const NewReviewForm = () => {
                     value={form.text}
                     onChange={(event) => {
                         dispatch({
-                            type: "setText",
+                            type: FORM_ACTIONS.setText,
                             payload: event.target.value
                         })
                     }}
@@ -72,13 +79,12 @@ export const NewReviewForm = () => {
             </div>
             <div>
                 <span>Rating</span>
-                <input
-                    type="number"
+                <Rating
                     value={form.rating}
-                    onChange={(event) => {
+                    onChange={(value) => {
                         dispatch({
-                            type: "setRating",
-                            payload: event.target.value
+                            type: FORM_ACTIONS.setRating,
+                            payload: value
                         })
                     }}
                 />
