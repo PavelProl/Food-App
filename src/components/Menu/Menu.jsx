@@ -1,9 +1,9 @@
 import React from "react";
 import { Dish } from "../Dish/Dish";
 
-export const Menu = ({ menu }) => {
+export const Menu = ({ menu, className }) => {
     return (
-        <div>
+        <div className={className}>
             { menu.map((dish) => {
                 return (
                     <Dish

@@ -3,7 +3,7 @@ import React from "react";
 export const Review = ({ review }) => {
     return (
         <div>
-            {review.text}
+            {`${review.user}: "${review.text}"`}
         </div>
     );
 };

@@ -1,9 +1,9 @@
 import React from "react";
 import { Review } from "../Review/Review";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviews, className }) => {
     return (
-        <div>
+        <div className={className}>
             {reviews.map((review) => {
                 return (
                     <Review

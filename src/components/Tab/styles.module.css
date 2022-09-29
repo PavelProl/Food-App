@@ -2,7 +2,7 @@
     padding: 10px 20px;
     border: none;
     transition: opacity 0.2s;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 .root:hover {
@@ -17,8 +17,4 @@
 .rootActive:hover {
     opacity: 1;
     cursor: default;
-}
-
-.isLast {
-    margin-right: 0;
 }
