@@ -1,3 +1,12 @@
 .root {
-    display: flex;
+}
+
+.actionWhite {
+    background-color: #fff;
+    color: #000;
+}
+
+.actionDark {
+    background-color: #000;
+    color: #fff;
 }
