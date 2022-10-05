@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Restaurants } from './pages/Restaurants';
 import { ThemeContext } from "./contexts/ThemeContext";
-import { store } from "./CustomStore/store";
+import { Provider } from "./CustomStore/component/Provider/Provider";
+import { store } from "./store/index";
 
 export const App = ({ restaurants }) => {
     const [theme, setTheme] = useState("white");
@@ -13,7 +14,7 @@ export const App = ({ restaurants }) => {
                     <button onClick={() => 
                         setTheme(theme === 'white' ? "dark" : "white")}>SwitchTheme
                     </button>
-                    <Restaurants restaurants={restaurants} theme={theme}/>
+                    <Restaurants restaurants={restaurants} />
                 </div>
             </ThemeContext.Provider>
         </Provider>
