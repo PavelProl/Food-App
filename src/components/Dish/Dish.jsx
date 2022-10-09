@@ -4,13 +4,18 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import styles from "./styles.module.css";
 import classNames from "classnames";
 
-export const Dish = ({ dish }) => {
+export const Dish = ({ dishName }) => {
     const theme = useContext(ThemeContext);
     const { decrement, increment, count } = useCount();
+
+    if (!dishName) {
+        return null;
+    }
+
     return (
         <div className={styles.root}>
             <div>
-                {dish.name}
+                {dishName}
             </div>
             <button onClick={decrement} disabled={count <= 0}>-</button>
             {/* условная отрисовка, как вариант оформления счетчика, */}

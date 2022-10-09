@@ -9,14 +9,10 @@ const initialState = {
     ids: normalizedRestaurants.map(restaurant => restaurant.id)
 };
 
-console.log(initialState);
+console.log("initialState", initialState);
 
 export const restaurantReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "addRestaurant":
-            const restaurant = action.payload;
-            
-            return [...state, restaurant];
         default:
             return state;
     }

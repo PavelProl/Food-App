@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Restaurants } from './pages/Restaurants';
 import { ThemeContext } from "./contexts/ThemeContext";
 import { Provider } from "react-redux";
 import { store } from "./store/index";
 
-export const App = ({ restaurants }) => {
+export const App = () => {
     const [theme, setTheme] = useState("white");
 
     return (
@@ -14,7 +14,7 @@ export const App = ({ restaurants }) => {
                     <button onClick={() => 
                         setTheme(theme === 'white' ? "dark" : "white")}>SwitchTheme
                     </button>
-                    <Restaurants restaurants={restaurants} />
+                    <Restaurants />
                 </div>
             </ThemeContext.Provider>
         </Provider>

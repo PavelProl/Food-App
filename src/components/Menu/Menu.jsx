@@ -2,15 +2,18 @@ import React from "react";
 import { Dish } from "../Dish/Dish";
 import classnames from "classnames";
 import styles from "./styles.module.css";
+import { RestaurantDishContainer } from "../../containers/RestaurantDish/RestaurantDishContainer";
 
-export const Menu = ({ menu, className }) => {
+export const Menu = ({ dishIds, className }) => {
+    console.log("dishIds", dishIds);
+
     return (
         <div className={classnames(className, styles.root)}>
-            { menu.map((dish) => {
+            {dishIds.map((dishId) => {
                 return (
-                    <Dish
-                        dish={dish}
-                        key={dish.id}
+                    <RestaurantDishContainer
+                        key={dishId}
+                        dishId={dishId}
                     />
                 );
             })}

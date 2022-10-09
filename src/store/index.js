@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from "redux";
 import { restaurantReducer } from "./restaurants/reducer";
+import { dishReducer } from "./dish/reducer";
 
 // const rootReducer = (state = {}, action = {}) => {
 //     const newState = {
@@ -11,7 +12,10 @@ import { restaurantReducer } from "./restaurants/reducer";
 // };
 
 const rootReducer = combineReducers({
-    restaurant: restaurantReducer
+    restaurant: restaurantReducer,
+    dish: dishReducer
 });
 
 export const store = createStore(rootReducer);
+
+// console.log("store", store.getState())

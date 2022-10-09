@@ -6,8 +6,8 @@ import { selectRestaurantIds } from "../store/restaurants/selectors";
 
 export const Restaurants = () => {
     // получаем id ресторанов
-    const restaurantsIds = useSelector(selectRestaurantIds);
-    console.log(restaurantsIds)
+    const restaurantIds = useSelector(selectRestaurantIds);
+    console.log(restaurantIds)
     const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
 
     return (
@@ -19,5 +19,5 @@ export const Restaurants = () => {
             /> */}
             <Restaurant restaurantId={restaurantIds[activeRestaurantIndex]} />
         </div>
-    )
+    );
 }
