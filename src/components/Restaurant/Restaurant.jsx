@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
-import styles from "./styles.module.css";
 import { Menu } from "../Menu/Menu";
 import { Reviews } from "../Reviews/Reviews";
 import { NewReviewForm } from "../NewReviewForm/NewReviewForm";
 import { Rating } from "../Rating/Rating";
+
+import styles from "./styles.module.css";
 
 export const Restaurant = ({ restaurant }) => {
     const rating = useMemo(() =>

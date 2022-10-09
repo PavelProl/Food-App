@@ -32,6 +32,7 @@ class Store {
     }
 };
 
+// единственный и неповторимый стор
 export const createStore = (() => {
     let store;
     return (rootReducer) => {

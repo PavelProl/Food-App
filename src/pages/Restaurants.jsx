@@ -1,33 +1,23 @@
 import React, { useState } from "react";
 import { Restaurant } from "../components/Restaurant/Restaurant";
 import { Tabs } from "../components/Tabs/Tabs";
-import { useDispatch} from "../CustomStore/hooks/useDispatch";
-import { nanoid } from "nanoid";
-import { useSelector } from "../CustomStore/hooks/useSelector";
+import { useSelector } from "react-redux";
+import { selectRestaurantIds } from "../store/restaurants/selectors";
 
 export const Restaurants = () => {
-    const restaurants = useSelector((state) => state.restaurant);
-    const dispatch = useDispatch();
+    // получаем id ресторанов
+    const restaurantsIds = useSelector(selectRestaurantIds);
+    console.log(restaurantsIds)
     const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
 
     return (
         <div>
-            <button 
-                onClick={() =>
-                    dispatch({
-                        type: "addRestaurant",
-                        payload: {...restaurants[0], id: nanoid(), name: nanoid()}
-                    })
-                }
-            >
-               addRestaurant 
-            </button>
-            <Tabs
+            {/* <Tabs
                 tabs={restaurants.map((restaurant) => restaurant.name)}
                 activeIndex={activeRestaurantIndex}
                 onClick={setActiveRestaurantIndex}
-            />
-            <Restaurant restaurant={restaurants[activeRestaurantIndex]} />
+            /> */}
+            <Restaurant restaurantId={restaurantIds[activeRestaurantIndex]} />
         </div>
     )
 }

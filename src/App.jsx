@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Restaurants } from './pages/Restaurants';
 import { ThemeContext } from "./contexts/ThemeContext";
-import { Provider } from "./CustomStore/component/Provider/Provider";
+import { Provider } from "react-redux";
 import { store } from "./store/index";
 
 export const App = ({ restaurants }) => {
