@@ -12,10 +12,13 @@ export const cartReducer = (state = initialState, action) => {
             };
         }
         case CART_ACTIONS.removeDish: {
-            const addedDishId = action.payload.dishId;
+            const removedDishId = action.payload.dishId;
             return {
                 ...state,
-                [addedDishId]: (state[addedDishId] ? state[addedDishId] : 0) - 1
+                [removedDishId]: 
+                    !state[removedDishId] || state[removedDishId] === 0
+                    ? 0
+                    : state[removedDishId] - 1
             };
         }
         default:

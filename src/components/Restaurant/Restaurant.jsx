@@ -20,7 +20,7 @@ export const Restaurant = ({ restaurantId }) => {
             {restaurant.name}
             <Rating value={rating} className={styles.rating} />
             <Menu className={styles.menu} dishIds={restaurant.menu} />
-            {/* <Reviews className={styles.reviews} reviews={restaurant.reviews} /> */}
+            <Reviews className={styles.reviews} reviewIds={restaurant.reviews} />
             {/* <NewReviewForm className={styles.newForm} /> */}
         </div>
     );

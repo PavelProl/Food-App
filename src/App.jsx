@@ -18,6 +18,5 @@ export const App = () => {
                 </div>
             </ThemeContext.Provider>
         </Provider>
-        
     );
 };

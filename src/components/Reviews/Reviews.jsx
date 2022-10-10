@@ -1,14 +1,14 @@
 import React from "react";
 import { Review } from "../Review/Review";
 
-export const Reviews = ({ reviews, className }) => {
+export const Reviews = ({ reviewIds, className }) => {
     return (
         <div className={className}>
-            {reviews.map((review) => {
+            {reviewIds.map((reviewId) => {
                 return (
                     <Review
-                        review={review}
-                        key={review.id}
+                        key={reviewId}
+                        reviewId={reviewId}
                     />
                 );
             })}
