@@ -4,9 +4,9 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import styles from "./styles.module.css";
 import classNames from "classnames";
 
-export const Dish = ({ dishName }) => {
+export const Dish = ({ dishName, count, increment, decrement }) => {
     const theme = useContext(ThemeContext);
-    const { decrement, increment, count } = useCount();
+    // const { decrement } = useCount();
 
     if (!dishName) {
         return null;
@@ -17,7 +17,10 @@ export const Dish = ({ dishName }) => {
             <div>
                 {dishName}
             </div>
-            <button onClick={decrement} disabled={count <= 0}>-</button>
+            <button onClick={decrement} disabled={count <= 0} className={classNames({
+                [styles.actionDark]: theme === "dark",
+                [styles.actionWhite]: theme === "white"
+            })}>-</button>
             {/* условная отрисовка, как вариант оформления счетчика, */}
             {/* но вариант с disabled кажется красивее */}
             {/* {count > 0 && <span>{count}</span>} */}

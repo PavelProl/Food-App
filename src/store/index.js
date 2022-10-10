@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from "redux";
 import { restaurantReducer } from "./restaurants/reducer";
 import { dishReducer } from "./dish/reducer";
+import { cartReducer } from "./cart/reducer";
 
 // const rootReducer = (state = {}, action = {}) => {
 //     const newState = {
@@ -13,7 +14,8 @@ import { dishReducer } from "./dish/reducer";
 
 const rootReducer = combineReducers({
     restaurant: restaurantReducer,
-    dish: dishReducer
+    dish: dishReducer,
+    cart: cartReducer
 });
 
 export const store = createStore(rootReducer);
