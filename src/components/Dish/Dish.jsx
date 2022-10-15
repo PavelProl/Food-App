@@ -14,21 +14,19 @@ export const Dish = ({ dishName, count, increment, decrement }) => {
 
     return (
         <div className={styles.root}>
-            <div>
-                {dishName}
+            <span className={styles.dishName}>{dishName}</span>
+            <div className={styles.actions}>
+                <button onClick={decrement} disabled={count <= 0} className={styles.action}>
+                    -
+                </button>
+                {/* условная отрисовка, как вариант оформления счетчика, */}
+                {/* но вариант с disabled кажется красивее */}
+                {/* {count > 0 && <span>{count}</span>} */}
+                {count}
+                <button onClick={increment} className={styles.action}>
+                    +
+                </button>
             </div>
-            <button onClick={decrement} disabled={count <= 0} className={classNames({
-                [styles.actionDark]: theme === "dark",
-                [styles.actionWhite]: theme === "white"
-            })}>-</button>
-            {/* условная отрисовка, как вариант оформления счетчика, */}
-            {/* но вариант с disabled кажется красивее */}
-            {/* {count > 0 && <span>{count}</span>} */}
-            <span>{count}</span>
-            <button onClick={increment} className={classNames({
-                [styles.actionDark]: theme === "dark",
-                [styles.actionWhite]: theme === "white"
-            })}>+</button>
         </div>
     );
 };

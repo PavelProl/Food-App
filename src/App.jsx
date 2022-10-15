@@ -9,14 +9,15 @@ export const App = () => {
 
     return (
         <Provider store={store}>
-            <ThemeContext.Provider value={theme}>
+            {/* <ThemeContext.Provider value={theme}>
                 <div>
                     <button onClick={() => 
                         setTheme(theme === 'white' ? "dark" : "white")}>SwitchTheme
                     </button>
                     <Restaurants />
                 </div>
-            </ThemeContext.Provider>
+            </ThemeContext.Provider> */}
+            <Restaurants />
         </Provider>
     );
 };

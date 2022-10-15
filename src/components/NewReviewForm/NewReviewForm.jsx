@@ -44,7 +44,7 @@ const reducer = (state, action) => {
     }
 };
 
-export const NewReviewForm = () => {
+export const NewReviewForm = ({ className }) => {
     const [form, dispatch] = useReducer(reducer, {
         name: "Нася",
         text: "Молви, друг",
@@ -52,7 +52,7 @@ export const NewReviewForm = () => {
     });
 
     return (
-        <div>
+        <div className={className}>
             <div>
                 <span>Name</span>
                 <input 

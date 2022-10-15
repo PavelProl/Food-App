@@ -8,15 +8,19 @@ export const Menu = ({ dishIds, className }) => {
     console.log("dishIds", dishIds);
 
     return (
-        <div className={classnames(className, styles.root)}>
-            {dishIds.map((dishId) => {
-                return (
-                    <RestaurantDishContainer
-                        key={dishId}
-                        dishId={dishId}
-                    />
-                );
-            })}
+        <div className={classnames(styles.root, className)}>
+            <span className={styles.title}>Menu</span>
+            <div className={styles.content}>
+                {dishIds?.map((dishId) => {
+                    return (
+                        <RestaurantDishContainer
+                            key={dishId}
+                            dishId={dishId}
+                            className={styles.dish}
+                        />
+                    );
+                })}
+            </div>
         </div>
     );
 };

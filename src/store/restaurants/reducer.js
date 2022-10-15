@@ -9,8 +9,6 @@ const initialState = {
     ids: normalizedRestaurants.map(restaurant => restaurant.id)
 };
 
-console.log("initialState", initialState);
-
 export const restaurantReducer = (state = initialState, action) => {
     switch (action.type) {
         default:

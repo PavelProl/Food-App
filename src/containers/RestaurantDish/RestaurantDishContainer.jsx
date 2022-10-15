@@ -5,7 +5,7 @@ import { selectDishCount } from "../../store/cart/selectors";
 import { Dish } from "../../components/Dish/Dish";
 import { addDish, removeDish } from "../../store/cart/actions";
 
-export const RestaurantDishContainer = ({ dishId }) => {
+export const RestaurantDishContainer = ({ dishId, ...props }) => {
     const dishName = useSelector(state => selectDishNameById(state, { dishId }));
 
     const dishCount = useSelector(state => selectDishCount(state, { dishId }));
@@ -21,6 +21,7 @@ export const RestaurantDishContainer = ({ dishId }) => {
             count={dishCount || 0} 
             increment={increment} 
             decrement={decrement}
+            {...props}
         />
     );
 };

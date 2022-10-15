@@ -9,19 +9,22 @@ import { useRestaurant } from "./hooks/useRestaurant";
 
 import styles from "./styles.module.css";
 
-
 export const Restaurant = ({ restaurantId }) => {
     const rating = useRestaurantRating(restaurantId);
     const restaurant = useRestaurant(restaurantId);
-    console.log("restaurant", restaurant)
 
     return (
-        <div className={styles.root}>
-            {restaurant.name}
-            <Rating value={rating} className={styles.rating} />
-            <Menu className={styles.menu} dishIds={restaurant.menu} />
+        <div className={styles.container}>
+            <div className={styles.restaurantInfo}>
+                <div className={styles.title}>{restaurant.name}</div>
+                <Rating value={rating} />
+            </div>
+            <Menu
+                className={styles.menu}
+                restaurantId={restaurantId}
+                dishIds={restaurant.menu}
+            />
             <Reviews className={styles.reviews} reviewIds={restaurant.reviews} />
-            {/* <NewReviewForm className={styles.newForm} /> */}
-        </div>
+      </div>
     );
 };
