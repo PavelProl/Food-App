@@ -3,9 +3,16 @@ import { Dish } from "../Dish/Dish";
 import classnames from "classnames";
 import styles from "./styles.module.css";
 import { RestaurantDishContainer } from "../../containers/RestaurantDish/RestaurantDishContainer";
+import { useLoadDishes } from "./hooks/useLoadDishes";
+import { useIsDishesLoading } from "./hooks/useIsDishesLoading";
 
-export const Menu = ({ dishIds, className }) => {
-    console.log("dishIds", dishIds);
+export const Menu = ({ restaurantId, dishIds, className }) => {
+    useLoadDishes(restaurantId);
+    const isLoading = useIsDishesLoading();
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className={classnames(styles.root, className)}>

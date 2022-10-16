@@ -1,9 +1,12 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { restaurantReducer } from "./restaurants/reducer";
 import { dishReducer } from "./dish/reducer";
 import { cartReducer } from "./cart/reducer";
 import { reviewReducer } from "./review/reducer";
 import { userReducer } from "./user/reducer";
+import { actionLogger } from "./middlewares/Logger";
+import { loadRestaurantsIfNotExist } from "./restaurants/middlewares/loadRestaurantsIfNotExist";
+import { loadDishesIfNotExist } from "./dish/middlewares/loadDishesIfNotExist";
 
 // const rootReducer = (state = {}, action = {}) => {
 //     const newState = {
@@ -22,6 +25,6 @@ const rootReducer = combineReducers({
     user: userReducer
 });
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(actionLogger, loadRestaurantsIfNotExist, loadDishesIfNotExist));
 
 // console.log("store", store.getState())
