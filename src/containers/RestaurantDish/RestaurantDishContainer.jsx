@@ -17,8 +17,8 @@ export const RestaurantDishContainer = ({ dishId, ...props }) => {
     return (
         <Dish
             dishName={dishName}
-            count={dishCount || 0} 
-            increment={increment} 
+            count={dishCount || 0}
+            increment={increment}
             decrement={decrement}
             {...props}
         />

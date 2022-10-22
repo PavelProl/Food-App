@@ -9,6 +9,10 @@ import classnames from "classnames";
 export const Review = ({ reviewId, className }) => {
     const review = useReview(reviewId);
 
+    if (!review) {
+        return null;
+    }
+
     return (
         <div className={classnames(styles.root, className)}>
             <div className={styles.header}>

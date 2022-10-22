@@ -166,7 +166,7 @@ export const normalizedRestaurants = [
   export const normalizedUsers = [
     {
       id: "a304959a-76c0-4b34-954a-b38dbf310360",
-      name: "Antony",
+      name: "Antonyss",
     },
     {
       id: "20bed9b5-9c7b-4771-8221-75b74ed1904a",

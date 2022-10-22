@@ -9,7 +9,7 @@ export const loadDishesIfNotExist = (store) => (next) => (action) => {
     }
     const restaurantId = action.payload.restaurantId;
 
-    // получаем блюдо ресторана
+    // получаем блюда ресторана
     const restaurantDishes = selectRestaurantDisheIdsById(store.getState(), {
         id: restaurantId
     });

@@ -6,12 +6,15 @@ import { Rating } from "../Rating/Rating";
 
 import { useRestaurantRating } from "./hooks/useRestaurantRating";
 import { useRestaurant } from "./hooks/useRestaurant";
+import { useLoadReviews } from "./hooks/useLoadReviews";
 
 import styles from "./styles.module.css";
 
 export const Restaurant = ({ restaurantId }) => {
     const rating = useRestaurantRating(restaurantId);
     const restaurant = useRestaurant(restaurantId);
+    // загружаем отзывы
+    useLoadReviews(restaurantId);
 
     return (
         <div className={styles.container}>

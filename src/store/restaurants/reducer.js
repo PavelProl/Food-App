@@ -1,4 +1,3 @@
-import { normalizedRestaurants } from "../../constants/normalized-fixtures";
 import { RESTAURANT_ACTIONS } from "./actions";
 
 const initialState = {

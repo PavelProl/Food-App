@@ -1,17 +1,32 @@
-import { normalizedUsers } from "../../constants/normalized-fixtures";
+import { USER_ACTIONS } from "./actions";
 
 const initialState = {
-    entities: normalizedUsers.reduce((acc, user) => {
-        acc[user.id] = user;
-
-        return acc;
-    }, {}),
-    ids: normalizedUsers.map(user => user.id)
-}
+    entities: {},
+    ids: [],
+    status: "idle" // 'success', 'error', 'loading'
+};
 
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
+        case USER_ACTIONS.startLoading:
+            return {
+                entities: {},
+                ids: [],
+                status: "loading"
+            }
+        case USER_ACTIONS.successLoading:
+            return {
+                entities: action.payload.entities,
+                ids: action.payload.ids,
+                status: "success"
+            }
+        case USER_ACTIONS.failLoading:
+            return {
+                entities: {},
+                ids: [],
+                status: "fail"
+            }
         default:
             return state;
     }
-};
+}

@@ -14,6 +14,7 @@ export const Restaurants = () => {
 
     const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
 
+    // загружаем рестораны
     useEffect(() => {
         dispatch(loadRestaurants());
     }, []);

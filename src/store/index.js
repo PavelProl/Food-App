@@ -7,6 +7,8 @@ import { userReducer } from "./user/reducer";
 import { actionLogger } from "./middlewares/Logger";
 import { loadRestaurantsIfNotExist } from "./restaurants/middlewares/loadRestaurantsIfNotExist";
 import { loadDishesIfNotExist } from "./dish/middlewares/loadDishesIfNotExist";
+import { loadUsersIfNotExist } from "./user/middlewares/loadUsersIfNotExist";
+import { loadReviewsIfNotExist } from "./review/middlewares/loadReviewsIfNotExist";
 
 // const rootReducer = (state = {}, action = {}) => {
 //     const newState = {
@@ -25,6 +27,6 @@ const rootReducer = combineReducers({
     user: userReducer
 });
 
-export const store = createStore(rootReducer, applyMiddleware(actionLogger, loadRestaurantsIfNotExist, loadDishesIfNotExist));
+export const store = createStore(rootReducer, applyMiddleware(actionLogger, loadRestaurantsIfNotExist, loadDishesIfNotExist, loadUsersIfNotExist, loadReviewsIfNotExist));
 
-// console.log("store", store.getState())
+console.log("store", store.getState())
