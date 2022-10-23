@@ -5,12 +5,13 @@ import { cartReducer } from "./cart/reducer";
 import { reviewReducer } from "./review/reducer";
 import { userReducer } from "./user/reducer";
 import { actionLogger } from "./middlewares/Logger";
-import { loadRestaurantsIfNotExist } from "./restaurants/thunks/loadRestaurantsIfNotExist";
-import { loadDishesIfNotExist } from "./dish/middlewares/loadDishesIfNotExist";
+// import { loadRestaurantsIfNotExist } from "./restaurants/thunks/loadRestaurantsIfNotExist";
+// import { loadDishesIfNotExist } from "./dish/middlewares/loadDishesIfNotExist";
 import { loadUsersIfNotExist } from "./user/middlewares/loadUsersIfNotExist";
 import { loadReviewsIfNotExist } from "./review/middlewares/loadReviewsIfNotExist";
 import { restaurantSlice } from "./restaurants/index";
-import { customThunk } from "./middlewares/CustomThunk";
+import { dishSlice } from "./dish/index";
+// import { customThunk } from "./middlewares/CustomThunk";
 
 // const rootReducer = (state = {}, action = {}) => {
 //     const newState = {
@@ -23,7 +24,7 @@ import { customThunk } from "./middlewares/CustomThunk";
 
 const rootReducer = combineReducers({
     restaurant: restaurantSlice.reducer,
-    dish: dishReducer,
+    dish: dishSlice.reducer,
     cart: cartReducer,
     review: reviewReducer,
     user: userReducer
@@ -44,7 +45,6 @@ export const store = configureStore({
         // customThunk,
         ...getDefaultMiddleware(),
         actionLogger,
-        loadDishesIfNotExist,
         loadUsersIfNotExist,
         loadReviewsIfNotExist
     ]

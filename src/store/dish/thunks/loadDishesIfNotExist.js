@@ -1,21 +1,22 @@
-import { DISH_ACTIONS, startLoading, failLoading, successLoading } from "../actions";
 import { normalizeEntities } from "../../helpers/normalizeEntities";
 import { selectRestaurantDisheIdsById } from "../../restaurants/selectors";
 import { selectDishIds } from "../selectors";
+import { dishSliceActions } from "../index";
 
-export const loadDishesIfNotExist = (store) => (next) => (action) => {
-    if (action.type !== DISH_ACTIONS.loadDishes) {
-        return next(action);
-    }
-    const restaurantId = action.payload.restaurantId;
+export const loadDishesIfNotExist = (restaurantId) => (dispatch, getState) => {
+    // if (action.type !== DISH_ACTIONS.loadDishes) {
+    //     return next(action);
+    // }
+
+    // const restaurantId = action.payload.restaurantId;
 
     // получаем блюда ресторана
-    const restaurantDishes = selectRestaurantDisheIdsById(store.getState(), {
+    const restaurantDishes = selectRestaurantDisheIdsById(getState(), {
         id: restaurantId
     });
 
     // получаем все загруженные блюда
-    const dishIds = selectDishIds(store.getState());
+    const dishIds = selectDishIds(getState());
 
     // console.log("restaurantDishes", restaurantDishes);
     // console.log("dishIds", dishIds);
@@ -30,14 +31,14 @@ export const loadDishesIfNotExist = (store) => (next) => (action) => {
         return;
     }
 
-    store.dispatch(startLoading());
+    dispatch(dishSliceActions.startLoading());
 
     fetch(`http://localhost:3001/api/products?id=${restaurantId}`)
         .then((responce) => responce.json())
         .then((dishes) => {
-            store.dispatch(successLoading(normalizeEntities(dishes)))
+            dispatch(dishSliceActions.successLoading(normalizeEntities(dishes)))
         })
         .catch((error) => {
-            store.dispatch(failLoading());
+            dispatch(dishSliceActions.failLoading());
         })
 };
