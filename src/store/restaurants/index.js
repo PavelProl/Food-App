@@ -1,4 +1,4 @@
-import { createSlice, createAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     entities: {},
@@ -33,7 +33,4 @@ export const restaurantSlice = createSlice({
     }
 });
 
-export const restaurantSliceActions = {
-    ...restaurantSlice.actions,
-    loadRestaurants: createAction("restaurant/LOAD")
-};
+export const restaurantSliceActions = restaurantSlice.actions;

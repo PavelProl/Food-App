@@ -5,11 +5,12 @@ import { cartReducer } from "./cart/reducer";
 import { reviewReducer } from "./review/reducer";
 import { userReducer } from "./user/reducer";
 import { actionLogger } from "./middlewares/Logger";
-import { loadRestaurantsIfNotExist } from "./restaurants/middlewares/loadRestaurantsIfNotExist";
+import { loadRestaurantsIfNotExist } from "./restaurants/thunks/loadRestaurantsIfNotExist";
 import { loadDishesIfNotExist } from "./dish/middlewares/loadDishesIfNotExist";
 import { loadUsersIfNotExist } from "./user/middlewares/loadUsersIfNotExist";
 import { loadReviewsIfNotExist } from "./review/middlewares/loadReviewsIfNotExist";
 import { restaurantSlice } from "./restaurants/index";
+import { customThunk } from "./middlewares/CustomThunk";
 
 // const rootReducer = (state = {}, action = {}) => {
 //     const newState = {
@@ -40,9 +41,9 @@ export const store = configureStore({
     reducer: rootReducer,
     devTools: process.env.NODE_ENV !== "production",
     middleware: (getDefaultMiddleware) => [
-        ...getDefaultMiddleware({ thunk: false }),
+        // customThunk,
+        ...getDefaultMiddleware(),
         actionLogger,
-        loadRestaurantsIfNotExist,
         loadDishesIfNotExist,
         loadUsersIfNotExist,
         loadReviewsIfNotExist
