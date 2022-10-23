@@ -1,3 +1,5 @@
+/* временно оставил в качестве примера ситуации до перехода на слайсы из Toolkit
+
 export const RESTAURANT_ACTIONS = {
     loadRestaurants: "restaurant/LOAD",
     startLoading: "restaurant/START_LOADING",
@@ -21,3 +23,4 @@ export const successLoading = (payload) => ({
     type: RESTAURANT_ACTIONS.successLoading,
     payload
 });
+*/

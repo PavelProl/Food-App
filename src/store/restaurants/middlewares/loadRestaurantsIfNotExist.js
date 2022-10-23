@@ -1,10 +1,10 @@
-import { RESTAURANT_ACTIONS, startLoading, failLoading, successLoading } from "../actions";
 import { normalizeEntities } from "../../helpers/normalizeEntities";
 import { selectRestaurantIds } from "../selectors";
+import { restaurantSliceActions } from "../index";
 
 export const loadRestaurantsIfNotExist = (store) => (next) => (action) => {
     // отлавливаем и проверяем экшн на загрузку ресторанов
-    if (action.type !== RESTAURANT_ACTIONS.loadRestaurants) {
+    if (action.type !== restaurantSliceActions.loadRestaurants.type) {
         return next(action);
     }
 
@@ -14,16 +14,16 @@ export const loadRestaurantsIfNotExist = (store) => (next) => (action) => {
     }
 
     // если рестораны не загружены
-    store.dispatch(startLoading());
+    store.dispatch(restaurantSliceActions.startLoading());
 
     fetch("http://localhost:3001/api/restaurants")
         .then((responce) => responce.json())
         .then((restaurants) => {
             // складываем нормализованные данные в store
             console.log('restaurants', normalizeEntities(restaurants));
-            store.dispatch(successLoading(normalizeEntities(restaurants)))
+            store.dispatch(restaurantSliceActions.successLoading(normalizeEntities(restaurants)))
         })
         .catch((error) => {
-            store.dispatch(failLoading());
+            store.dispatch(restaurantSliceActions.failLoading());
         })
 };

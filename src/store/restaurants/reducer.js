@@ -1,3 +1,5 @@
+/* временно оставил в качестве примера ситуации до перехода на слайсы из Toolkit
+
 import { RESTAURANT_ACTIONS } from "./actions";
 
 const initialState = {
@@ -15,6 +17,7 @@ export const restaurantReducer = (state = initialState, action) => {
                 status: "loading"
             }
         case RESTAURANT_ACTIONS.successLoading:
+            // const { entities, ids } = action.payload;
             return {
                 entities: action.payload.entities,
                 ids: action.payload.ids,
@@ -30,3 +33,4 @@ export const restaurantReducer = (state = initialState, action) => {
             return state;
     }
 }
+*/

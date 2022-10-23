@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout/Layout";
 import { RestaurantTabsContainer } from "../containers/RestaurantTabs/RestaurantTabsContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { selectRestaurantIds, selectIsRestaurantsLoading } from "../store/restaurants/selectors";
-import { loadRestaurants } from "../store/restaurants/actions";
+import { restaurantSliceActions } from "../store/restaurants/index";
 
 export const Restaurants = () => {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const Restaurants = () => {
 
     // загружаем рестораны
     useEffect(() => {
-        dispatch(loadRestaurants());
+        dispatch(restaurantSliceActions.loadRestaurants());
     }, []);
 
     if (isLoading) {
