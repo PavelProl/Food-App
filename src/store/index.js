@@ -1,16 +1,10 @@
 import { combineReducers } from "redux";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { dishReducer } from "./dish/reducer";
-import { cartReducer } from "./cart/reducer";
-import { reviewReducer } from "./review/reducer";
-import { userReducer } from "./user/reducer";
 import { actionLogger } from "./middlewares/Logger";
-// import { loadRestaurantsIfNotExist } from "./restaurants/thunks/loadRestaurantsIfNotExist";
-// import { loadDishesIfNotExist } from "./dish/middlewares/loadDishesIfNotExist";
-import { loadUsersIfNotExist } from "./user/middlewares/loadUsersIfNotExist";
-import { loadReviewsIfNotExist } from "./review/middlewares/loadReviewsIfNotExist";
 import { restaurantSlice } from "./restaurants/index";
 import { dishSlice } from "./dish/index";
+import { reviewSlice } from "./review/index";
+import { userSlice } from "./user/index";
 // import { customThunk } from "./middlewares/CustomThunk";
 
 // const rootReducer = (state = {}, action = {}) => {
@@ -25,9 +19,9 @@ import { dishSlice } from "./dish/index";
 const rootReducer = combineReducers({
     restaurant: restaurantSlice.reducer,
     dish: dishSlice.reducer,
-    cart: cartReducer,
-    review: reviewReducer,
-    user: userReducer
+    cart: cartSlice.reducer,
+    review: reviewSlice.reducer,
+    user: userSlice.reducer
 });
 
 // export const store = createStore(rootReducer, applyMiddleware(
@@ -44,10 +38,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => [
         // customThunk,
         ...getDefaultMiddleware(),
-        actionLogger,
-        loadUsersIfNotExist,
-        loadReviewsIfNotExist
-    ]
+        actionLogger    ]
 });
 
 console.log("store", store.getState())

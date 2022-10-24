@@ -1,24 +1,25 @@
-import { REVIEW_ACTIONS, startLoading, failLoading, successLoading } from "../actions";
 import { normalizeEntities } from "../../helpers/normalizeEntities";
 import { selectReviewIds } from "../selectors";
 import { selectRestaurantReviewIdsById } from "../../restaurants/selectors";
+import { reviewSliceActions } from "../index";
 
-export const loadReviewsIfNotExist = (store) => (next) => (action) => {
-    if (action.type !== REVIEW_ACTIONS.loadReviews) {
-        return next(action);
-    }
+export const loadReviewsIfNotExist = (restaurantId) => (dispatch, getState) => {
+
+    // if (action.type !== REVIEW_ACTIONS.loadReviews) {
+    //     return next(action);
+    // }
 
     // проверяем, загружены ли отзывы
 
     //// {
-    const restaurantId = action.payload.restaurantId;
+    // const restaurantId = action.payload.restaurantId;
     // получаем отзывы ресторана
-    const restaurantReviews = selectRestaurantReviewIdsById(store.getState(), {
+    const restaurantReviews = selectRestaurantReviewIdsById(getState(), {
         id: restaurantId
     });
 
     // получаем все загруженные отзывы
-    const reviewIds = selectReviewIds(store.getState());
+    const reviewIds = selectReviewIds(getState());
 
     // проверяем на вхождение отзывов ресторана в загруженные отзывы
     if (
@@ -32,16 +33,16 @@ export const loadReviewsIfNotExist = (store) => (next) => (action) => {
     //// }
 
     // если отзывы не загружены
-    store.dispatch(startLoading());
+    dispatch(reviewSliceActions.startLoading());
 
     fetch("http://localhost:3001/api/reviews?id=${restaurantId}")
         .then((response) => response.json())
         .then((reviews) => {
             // складываем нормализованные данные в store
             console.log('reviews', normalizeEntities(reviews));
-            store.dispatch(successLoading(normalizeEntities(reviews)))
+            dispatch(reviewSliceActions.successLoading(normalizeEntities(reviews)))
         })
         .catch((error) => {
-            store.dispatch(failLoading());
+            dispatch(reviewSliceActions.failLoading());
         })
 };

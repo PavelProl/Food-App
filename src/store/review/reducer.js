@@ -1,3 +1,5 @@
+/* временно оставил в качестве примера ситуации до перехода на слайсы из Toolkit
+
 import { REVIEW_ACTIONS } from "./actions";
 
 const initialState = {
@@ -33,3 +35,5 @@ export const reviewReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+*/

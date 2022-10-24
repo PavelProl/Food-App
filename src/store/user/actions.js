@@ -1,3 +1,5 @@
+/* временно оставил в качестве примера ситуации до перехода на слайсы из Toolkit
+
 export const USER_ACTIONS = {
     loadUsers: "user/LOAD",
     startLoading: "user/START_LOADING",
@@ -21,3 +23,5 @@ export const successLoading = (payload) => ({
     type: USER_ACTIONS.successLoading,
     payload
 });
+
+*/

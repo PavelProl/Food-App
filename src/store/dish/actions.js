@@ -1,3 +1,5 @@
+/* временно оставил в качестве примера ситуации до перехода на слайсы из Toolkit
+
 export const DISH_ACTIONS = {
     loadDishes: "dish/LOAD",
     startLoading: "dish/START_LOADING",
@@ -22,3 +24,5 @@ export const successLoading = (payload) => ({
     type: DISH_ACTIONS.successLoading,
     payload
 });
+
+*/

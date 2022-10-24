@@ -1,28 +1,28 @@
-import { USER_ACTIONS, startLoading, successLoading, failLoading } from "../actions";
 import { selectUserIds } from "../selectors";
 import { normalizeEntities } from "../../helpers/normalizeEntities";
+import { userSliceActions } from "../index";
 
-export const loadUsersIfNotExist = (store) => (next) => (action) => {
+export const loadUsersIfNotExist = (dispatch, getState) => {
     // отлавливаем и проверяем экшн на загрузку пользователей
-    if (action.type !== USER_ACTIONS.loadUsers) {
-        return next(action);
-    }
+    // if (action.type !== USER_ACTIONS.loadUsers) {
+    //     return next(action);
+    // }
 
     // проверяем, загружены ли пользователи
-    if (selectUserIds(store.getState())?.length > 0) {
+    if (selectUserIds(getState())?.length > 0) {
         return;
     }
 
     // если пользователи не загружены
-    store.dispatch(startLoading());
+    dispatch(userSliceActions.startLoading());
 
     fetch("http://localhost:3001/api/users")
         .then((response) => response.json())
         .then((users) => {
             console.log('users', normalizeEntities(users));
-            store.dispatch(successLoading(normalizeEntities(users)));
+            dispatch(userSliceActions.successLoading(normalizeEntities(users)));
         })
         .catch((error) => {
-            store.dispatch(failLoading());
+            dispatch(userSliceActions.failLoading());
         })
 }

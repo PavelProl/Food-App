@@ -1,3 +1,5 @@
+/* временно оставил в качестве примера ситуации до перехода на слайсы из Toolkit
+
 import { DISH_ACTIONS } from "./actions";
 
 const initialState = {
@@ -33,3 +35,5 @@ export const dishReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+*/
