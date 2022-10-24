@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { selectDishNameById } from "../../store/dish/selectors";
 import { selectDishCount } from "../../store/cart/selectors";
 import { Dish } from "../../components/Dish/Dish";
-import { addDish, removeDish } from "../../store/cart/actions";
+import { cartSliceActions } from "../../store/cart/index";
 
 export const RestaurantDishContainer = ({ dishId, ...props }) => {
     const dishName = useSelector(state => selectDishNameById(state, { dishId }));
@@ -11,8 +11,18 @@ export const RestaurantDishContainer = ({ dishId, ...props }) => {
 
     const dispatch = useDispatch();
 
-    const increment = useCallback(() => dispatch(addDish(dishId), [dishId]));
-    const decrement = useCallback(() => dispatch(removeDish(dishId), [dishId]));
+    const increment = useCallback(
+        () => dispatch(cartSliceActions.addDish(dishId)),
+        [dishId]
+    );
+    const decrement = useCallback(
+        () => dispatch(cartSliceActions.removeDish(dishId)),
+        [dishId]
+    );
+
+    if (!dishName) {
+        return null;
+    }
 
     return (
         <Dish

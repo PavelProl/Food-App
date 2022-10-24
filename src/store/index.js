@@ -5,6 +5,7 @@ import { restaurantSlice } from "./restaurants/index";
 import { dishSlice } from "./dish/index";
 import { reviewSlice } from "./review/index";
 import { userSlice } from "./user/index";
+import { cartSlice } from "./cart/index";
 // import { customThunk } from "./middlewares/CustomThunk";
 
 // const rootReducer = (state = {}, action = {}) => {
