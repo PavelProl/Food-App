@@ -3,14 +3,14 @@ import { RestaurantTabContainer } from "../RestaurantTab/RestaurantTabContainer"
 import { useSelector } from "react-redux";
 import { selectRestaurantIds } from "../../store/restaurants/selectors";
 
-export const RestaurantTabsContainer = ({ onClick, activeTabIndex }) => {
+export const RestaurantTabsContainer = ({ activeTabIndex }) => {
     const restaurantIds = useSelector(selectRestaurantIds);
 
     return (
         <Tabs
             tabIds={restaurantIds}
-            onClick={onClick}
-            activeTabIndex={activeTabIndex}
+            // onClick={onClick}
+            // activeTabIndex={activeTabIndex}
             renderTab={(props) => (
                 <RestaurantTabContainer key={props.id} {...props} />
             )}

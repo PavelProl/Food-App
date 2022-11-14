@@ -1,23 +1,23 @@
-import { useState } from "react";
 import { Restaurants } from './pages/Restaurants';
-import { ThemeContext } from "./contexts/ThemeContext";
+import { Restaurant } from "./components/Restaurant/Restaurant";
+import { Layout } from "./components/Layout/Layout";
+import { NotFound } from "./pages/NotFound";
 import { Provider } from "react-redux";
 import { store } from "./store/index";
+import { Routes, Route } from 'react-router-dom';
 
 export const App = () => {
-    const [theme, setTheme] = useState("white");
-
     return (
         <Provider store={store}>
-            {/* <ThemeContext.Provider value={theme}>
-                <div>
-                    <button onClick={() => 
-                        setTheme(theme === 'white' ? "dark" : "white")}>SwitchTheme
-                    </button>
-                    <Restaurants />
-                </div>
-            </ThemeContext.Provider> */}
-            <Restaurants />
+            <Layout>
+                <Routes>
+                    <Route path="*" element={<NotFound />} />
+                    <Route path="/" element={<div>HomePage</div>} />
+                    <Route path="restaurants" element={<Restaurants />}>
+                        <Route path=":restaurantId" element={<Restaurant />} />
+                    </Route>
+                </Routes>
+            </Layout>
         </Provider>
     );
 };

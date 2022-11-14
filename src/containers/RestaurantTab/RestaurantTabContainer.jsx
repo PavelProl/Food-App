@@ -6,5 +6,5 @@ import { selectRestaurantNameById } from "../../store/restaurants/selectors";
 export const RestaurantTabContainer = ({ id, ...props }) => {
     const name = useSelector((state) => selectRestaurantNameById(state, { id }));
 
-    return <Tab title={name} {...props} />;
+    return <Tab title={name} to={id} {...props} />;
 };

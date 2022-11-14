@@ -23,7 +23,7 @@ export const loadReviewsIfNotExist = (restaurantId) => (dispatch, getState) => {
 
     // проверяем на вхождение отзывов ресторана в загруженные отзывы
     if (
-        restaurantReviews.every(
+        restaurantReviews?.every(
             (restaurantReview) => reviewIds.indexOf(restaurantReview) !== -1
         )
     ) {

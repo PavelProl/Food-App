@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Restaurant } from "../components/Restaurant/Restaurant";
-import { Layout } from "../components/Layout/Layout";
-import { RestaurantTabsContainer } from "../containers/RestaurantTabs/RestaurantTabsContainer";
 import { useSelector, useDispatch } from "react-redux";
-import { selectRestaurantIds, selectIsRestaurantsLoading } from "../store/restaurants/selectors";
+import { Outlet } from "react-router-dom";
+import { RestaurantTabsContainer } from "../containers/RestaurantTabs/RestaurantTabsContainer";
+import { selectIsRestaurantsLoading } from "../store/restaurants/selectors";
 import { loadRestaurantsIfNotExist } from "../store/restaurants/thunks/loadRestaurantsIfNotExist";
 
 export const Restaurants = () => {
     const dispatch = useDispatch();
     // получаем id ресторанов
-    const restaurantIds = useSelector(selectRestaurantIds);
+    // const restaurantIds = useSelector(selectRestaurantIds);
     const isLoading = useSelector(selectIsRestaurantsLoading);
 
-    const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
+    // const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
 
     // загружаем рестораны
     useEffect(() => {
@@ -24,14 +23,16 @@ export const Restaurants = () => {
     }
 
     return (
-        <Layout>
+        <>
             <RestaurantTabsContainer
-                activeTabIndex={activeRestaurantIndex}
-                onClick={setActiveRestaurantIndex}
+                // activeTabIndex={activeRestaurantIndex}
+                // onClick={setActiveRestaurantIndex}
             />
-            {restaurantIds.length > 0 && (
+            <Outlet />
+
+            {/* {restaurantIds.length > 0 && (
                 <Restaurant restaurantId={restaurantIds[activeRestaurantIndex]} />
-            )}
-        </Layout>
+            )} */}
+        </>
     );
 }
